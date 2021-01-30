@@ -9,14 +9,14 @@ export const CAMPSITES = [
             {
                 id: 0,
                 rating: 5, 
-                text: "What a magnificent view!",
+                text: "What a magnificient lake!",
                 author: "Tinus Lorvaldes",
                 date: "2018-10-25T16:30Z"
             },
             {
                 id: 1,
                 rating: 4, 
-                text: "The campground was beautiful, but the bugs could bite sometimes.",
+                text: "We got attacked by drowners. Good thing Geralt saved the day!",
                 author: "Brennen Ech",
                 date: "2017-06-17T03:33Z"
             },
@@ -30,7 +30,7 @@ export const CAMPSITES = [
             {
                 id: 3,
                 rating: 5, 
-                text: "A wonderful place to reconnect with nature.",
+                text: "I took the picture on the website! I'm so proud.",
                 author: "Jordan Runn",
                 date: "2019-08-04T20:11Z"
             },
@@ -53,7 +53,7 @@ export const CAMPSITES = [
             {
                 id: 0,
                 rating: 5, 
-                text: "What a magnificent view!",
+                text: "What a magnificent stream!",
                 author: "Tinus Lorvaldes",
                 date: "2018-10-25T16:30Z"
             },
@@ -97,7 +97,7 @@ export const CAMPSITES = [
             {
                 id: 0,
                 rating: 5, 
-                text: "What a magnificent view!",
+                text: "What a magnificent fire!",
                 author: "Tinus Lorvaldes",
                 date: "2018-10-25T16:30Z"
             },
@@ -141,7 +141,7 @@ export const CAMPSITES = [
             {
                 id: 0,
                 rating: 5, 
-                text: "What a magnificent view!",
+                text: "What a magnificent tent!",
                 author: "Tinus Lorvaldes",
                 date: "2018-10-25T16:30Z"
             },

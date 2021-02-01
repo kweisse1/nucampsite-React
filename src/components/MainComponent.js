@@ -20,18 +20,26 @@ class Main extends Component {
   }
 
   render() {
+    let info = null;
+
+    //the rest is left as an exercise to the reader
+    if (this.state.selectedCampsite !== null){
+         info = <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]}/>
+    }
+
     return (
       <div>
         <Navbar dark color={this.state.buttonColor}>
           <div className="container">
-            <NavbarBrand href="/">NuCamp</NavbarBrand>
-          </div>
+            <NavbarBrand href="/">NuCamp</NavbarBrand>  
+          </div>    
         </Navbar>
-        <Directory campsites={this.state.campsites} onClick={campsiteId => this.onCampsiteSelect(campsiteId)}/>
-        <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]}/>
+        <Directory campsites={this.state.campsites} onClick={campsiteId => {return this.onCampsiteSelect(campsiteId)}}/>
+        {info}
       </div>
     );
   }
 }
+
 
 export default Main;

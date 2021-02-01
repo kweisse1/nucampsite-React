@@ -23,7 +23,7 @@ export const CAMPSITES = [
             {
                 id: 2,
                 rating: 5, 
-                text: "I caught a world-record-breaking trout here on my last visit.",
+                text: "Lorum Ipsum I sure have a unique comment eh?",
                 author: "McKenzie Sebastian",
                 date: "2019-02-18T18:12Z"
             },

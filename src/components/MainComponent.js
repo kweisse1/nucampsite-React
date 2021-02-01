@@ -13,6 +13,7 @@ class Main extends Component {
       buttonColor: "primary",
       selectedCampsite: null
     };
+    
   }
 
   onCampsiteSelect(campId) {
@@ -20,13 +21,7 @@ class Main extends Component {
   }
 
   render() {
-    let info = null;
-
-    //the rest is left as an exercise to the reader
-    if (this.state.selectedCampsite !== null){
-         info = <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]}/>
-    }
-
+    
     return (
       <div>
         <Navbar dark color={this.state.buttonColor}>
@@ -35,7 +30,7 @@ class Main extends Component {
           </div>    
         </Navbar>
         <Directory campsites={this.state.campsites} onClick={campsiteId => {return this.onCampsiteSelect(campsiteId)}}/>
-        {info}
+        <CampsiteInfo campsite={this.state.campsites.filter(cam => cam.id === this.state.selectedCampsite)[0]}/>
       </div>
     );
   }

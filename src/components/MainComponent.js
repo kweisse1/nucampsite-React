@@ -26,7 +26,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.state.campsites);
     const HomePage = () => {
       return (
           <Home
@@ -36,12 +35,27 @@ class Main extends Component {
           />
         );
     } 
+
+    const CampsiteWithId = ({match}) => {
+      console.log(this.state.campsites);
+      return (
+        <>
+          <CampsiteInfo
+            campsite={this.state.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
+            comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
+          />
+          some things smell bad
+        </>
+      );
+    }
+
     return (
       <div>
         <Header />
         <Switch>
           <Route path='/home' component={HomePage} />
           <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />}/>
+          <Route path='/directory/:campsiteid' component={CampsiteWithId}/>
           <Route exact path="/contactus" component={Contact}/>
           {/* <Route exact path="/aboutus" render={() => {partners}}/> */}
           <Redirect to ='/home' />

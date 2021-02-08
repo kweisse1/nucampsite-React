@@ -1,8 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-
-
-
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 function RenderCampsite({campsite}){
     return (
@@ -14,7 +11,6 @@ function RenderCampsite({campsite}){
                     <CardText>{campsite.description}</CardText>
                 </CardBody>
             </Card>
-            random text something
         </div>
     );
 }
@@ -43,17 +39,12 @@ function CampsiteInfo(props) {
                 <div className="row">
                     <RenderCampsite campsite={props.campsite}/>
                     <RenderComments comments={props.comments}/>
-                    still messed up, how to get here
                 </div>
             </div>
         )
     }
 
-    return(<div>
-        nothing here
-    </div>
-        
-    );
+    return(<div/>);
 }
 
 export default CampsiteInfo;

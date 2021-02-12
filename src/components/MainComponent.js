@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-    camspites: state.campsites,
+    campsites: state.campsites,
     comments: state.comments,
     partners: state.partners,
     promotions: state.promotions
@@ -21,12 +21,15 @@ const mapStateToProps = state => {
 class Main extends Component {
 
   render() {
+
+    console.log(this.props);
+
     const HomePage = () => {
       return (
           <Home
-            campsite={this.props.campsites.filter(campsite => campsite.featured)[0]}
-            promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
-            partner={this.props.partners.filter(partner => partner.featured)[0]}
+              campsite={this.props.campsites.filter(campsite => campsite.featured)[0]}
+              promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
+              partner={this.props.partners.filter(partner => partner.featured)[0]}
           />
         );
     } 

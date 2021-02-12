@@ -4,7 +4,7 @@ import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
 
 export const initialState = {
-    campsties: CAMPSITES,
+    campsites: CAMPSITES,
     comments: COMMENTS,
     partners: PARTNERS,
     promotions: PROMOTIONS

@@ -4,6 +4,7 @@ import {
     Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { LocalForm, Control } from "react-redux-form";
 
 function RenderCampsite({ campsite }) {
     return (
@@ -36,35 +37,49 @@ class CommentForm extends Component {
     }
 
     handleSubmit(event) {
-        alert(`Rating: ${this.rating.value} comment: ${this.newcomment.value}`);
+        //this alert doesn't work, it shows undefined with the current code.
+        alert(`Rating: ${this.rating} comment: ${this.comment}`);
         this.toggleModal();
-        event.preventDefault();
     }
 
     render() {
         return (
             <>
                 <Button color="info" onClick={this.toggleModal}>
-                    <i className="fa fa-pencil fa-lg"/>Submit Comment
+                    <i className="fa fa-pencil fa-lg" />Add Comment
                 </Button>
 
                 <Modal isOpen={this.state.isCommentModalOpen} toggle={this.toggleModal}>
-                <ModalHeader toggle={this.toggleModal}>whyyyy</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal}>Add Comment</ModalHeader>
                     <ModalBody>
-                        <div>definitely gonna cry</div>
-                        {/* <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" 
-                                    innerRed={input => this.username = input} />
-                            </FormGroup>
-                            <FormGroup>
-                            <Label htmlFor="password">Pasword</Label>
-                                <Input type="password" id="password" name="password" 
-                                    innerRef={input => this.password= input} />
-                            </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
-                        </Form> */}
+                        <LocalForm onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <label for="rating">Rating</label>
+                                <Control.select className="form-control" model=".rating" name="rating" id="rating">
+                                    <option></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </Control.select>
+                            </div>
+
+                            <div className="form-group">
+                                <label for="author">Your Name</label>
+                                <Control.text className="form-control" model=".author" name="author" id="author" placeholder="Your Name"/>
+                            </div>
+                            
+                            <div className="form-group">
+                                <label for="comment">Comment</label>
+                                <Control.textarea className="form-control" model=".comment" name="comment" id="comment" placeholder="comment" rows="6"/>
+                            </div>
+
+                            <Button type="submit" color="primary">
+                                        Submit
+                            </Button>
+
+                        </LocalForm>
                     </ModalBody>
                 </Modal>
             </>

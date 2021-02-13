@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
+    Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
 
 function RenderCampsite({ campsite }) {
     return (
@@ -17,12 +19,54 @@ function RenderCampsite({ campsite }) {
 }
 
 class CommentForm extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isCommentModalOpen: false
+        };
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    toggleModal() {
+        this.setState({
+            isCommentModalOpen: !this.state.isCommentModalOpen
+        });
+    }
+
+    handleSubmit(event) {
+        alert(`Rating: ${this.rating.value} comment: ${this.newcomment.value}`);
+        this.toggleModal();
+        event.preventDefault();
+    }
+
     render() {
         return (
             <>
-                <Button color="info">
-                    <i className="fa fa-pencil fa-lg" />Submit Comment
+                <Button color="info" onClick={this.toggleModal}>
+                    <i className="fa fa-pencil fa-lg"/>Submit Comment
                 </Button>
+
+                <Modal isOpen={this.state.isCommentModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>whyyyy</ModalHeader>
+                    <ModalBody>
+                        <div>definitely gonna cry</div>
+                        {/* <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="username">Username</Label>
+                                <Input type="text" id="username" name="username" 
+                                    innerRed={input => this.username = input} />
+                            </FormGroup>
+                            <FormGroup>
+                            <Label htmlFor="password">Pasword</Label>
+                                <Input type="password" id="password" name="password" 
+                                    innerRef={input => this.password= input} />
+                            </FormGroup>
+                            <Button type="submit" value="submit" color="primary">Login</Button>
+                        </Form> */}
+                    </ModalBody>
+                </Modal>
             </>
         )
     }
@@ -38,7 +82,7 @@ function RenderComments({ comments }) {
                         <p>{comment.text}<br />
                         -- {comment.author} - {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
                     </div>)}
-                <CommentForm/>    
+                <CommentForm />
             </div>
         )
     }

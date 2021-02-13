@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
-    Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label } from 'reactstrap';
+         Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label 
+        } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -31,7 +31,7 @@ class Header extends Component {
     }
 
     handleLogin(event) {
-        alert(`Username: ${this.username.value} Password:{this.password.value}`);
+        alert(`Username: ${this.username.value} Password:${this.password.value}`);
         this.toggleModal();
         event.preventDefault();
     }

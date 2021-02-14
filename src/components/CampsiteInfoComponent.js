@@ -4,7 +4,11 @@ import {
     Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { LocalForm, Control } from "react-redux-form";
+import { LocalForm, Control, Errors } from "react-redux-form";
+
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+
 
 function RenderCampsite({ campsite }) {
     return (
@@ -66,7 +70,23 @@ class CommentForm extends Component {
 
                             <div className="form-group">
                                 <label for="author">Your Name</label>
-                                <Control.text className="form-control" model=".author" name="author" id="author" placeholder="Your Name"/>
+                                <Control.text model=".author" name="author" id="author" 
+                                    placeholder="Your Name" className="form-control" 
+                                    validators={{
+                                        minLength: minLength(2),
+                                        maxLength: maxLength(15)
+                                    }}
+                                />
+                                <Errors
+                                        className="text-danger"
+                                        model=".author"
+                                        show="touched"
+                                        component="div"
+                                        messages={{
+                                            minLength: 'Must be at least 2 character',
+                                            maxLength: 'Must be 15 characters or less'
+                                        }}
+                                    />
                             </div>
                             
                             <div className="form-group">

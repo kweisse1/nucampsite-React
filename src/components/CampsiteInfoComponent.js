@@ -36,10 +36,9 @@ class CommentForm extends Component {
         });
     }
 
-    handleSubmit(event) {
-        //this alert doesn't work, it shows undefined with the current code.
-        alert(`Rating: ${this.rating} comment: ${this.comment}`);
-        this.toggleModal();
+    handleSubmit(values) {
+        console.log("Current state is: " + JSON.stringify(values));
+        alert("Current state is: " + JSON.stringify(values));
     }
 
     render() {

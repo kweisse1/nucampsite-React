@@ -41,8 +41,9 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        console.log("handle submit values:" + values.text);
+        this.toggleModal();
+        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
 
     render() {
@@ -90,8 +91,8 @@ class CommentForm extends Component {
                             </div>
                             
                             <div className="form-group">
-                                <label for="comment">Comment</label>
-                                <Control.textarea className="form-control" model=".comment" name="comment" id="comment" placeholder="comment" rows="6"/>
+                                <label for="text">Comment</label>
+                                <Control.textarea className="form-control" model=".text" name="text" id="text" placeholder="comment" rows="6"/>
                             </div>
 
                             <Button type="submit" color="primary">
@@ -106,25 +107,29 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({ comments }) {
+function RenderComments({comments, addComment, campsiteId}) {
     if (comments) {
         return (
             <div className="col-md-5 m-1">
                 <h4>Comments</h4>
-                {comments.map(comment =>
-                    <div key={comment.id}>
-                        <p>{comment.text}<br />
-                        -- {comment.author} - {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
-                    </div>)}
-                <CommentForm />
+                {comments.map(comment => {
+                    return(
+                        <div key={comment.id}>
+                            <p>{comment.text}<br />
+                            -- {comment.author} - {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
+                            </p>
+                        </div>
+                    );
+                })}
+                <CommentForm campsiteId={campsiteId} addComment={addComment}  />
             </div>
         )
     }
-    return <div />
+    return (<div >render comments broken</div>)
 }
 
 function CampsiteInfo(props) {
-    console.log(props);
+    console.log(props.comments);
     if (props.campsite) {
         return (
             <div className="container">
@@ -140,7 +145,11 @@ function CampsiteInfo(props) {
                 </div>
                 <div className="row">
                     <RenderCampsite campsite={props.campsite} />
-                    <RenderComments comments={props.comments} />
+                    <RenderComments 
+                        comments={props.comments} 
+                        addComment={props.addComment}
+                        campsiteId={props.campsite.id}
+                    />
                 </div>
             </div>
         )

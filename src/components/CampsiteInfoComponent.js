@@ -41,6 +41,7 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
+        console.log("handle submit values:" + values.text);
         this.toggleModal();
         this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
@@ -90,8 +91,8 @@ class CommentForm extends Component {
                             </div>
                             
                             <div className="form-group">
-                                <label for="comment">Comment</label>
-                                <Control.textarea className="form-control" model=".comment" name="comment" id="comment" placeholder="comment" rows="6"/>
+                                <label for="text">Comment</label>
+                                <Control.textarea className="form-control" model=".text" name="text" id="text" placeholder="comment" rows="6"/>
                             </div>
 
                             <Button type="submit" color="primary">
@@ -128,7 +129,7 @@ function RenderComments({comments, addComment, campsiteId}) {
 }
 
 function CampsiteInfo(props) {
-    console.log(props);
+    console.log(props.comments);
     if (props.campsite) {
         return (
             <div className="container">

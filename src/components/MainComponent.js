@@ -26,12 +26,14 @@ const mapDispatchToProps = {
 
 class Main extends Component {
 
-  componentDidMoment() {
+  componentDidMount() {
     this.props.fetchCampsites();
   }
 
   render() {
     const HomePage = () => {
+      console.log("in Main, this.props.campsites reads:"+JSON.stringify(this.props.campsites, null, 2));
+
       return (
           <Home
               campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
@@ -44,7 +46,6 @@ class Main extends Component {
     } 
 
     const CampsiteWithId = ({match}) => {
-      // console.log(this.props.campsites);
       return (
         <>
           <CampsiteInfo

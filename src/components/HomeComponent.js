@@ -21,6 +21,7 @@ function RenderCard({item, isLoading, errMess}) {
 }
 
 function Home(props) {
+    console.log('Home component props'+JSON.stringify(props,null, 2))
     return (
         <div className="container">
             <div className="row">

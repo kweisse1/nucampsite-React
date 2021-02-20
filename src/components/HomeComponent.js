@@ -21,13 +21,13 @@ function RenderCard({item, isLoading, errMess}) {
 }
 
 function Home(props) {
-    console.log('Home component props'+JSON.stringify(props,null, 2))
+    console.log('Home component props:', props)
     return (
         <div className="container">
             <div className="row">
             <div className="col-md m-1">
                 <RenderCard 
-                    item={props.campsite} 
+                    item={props.campsite}
                     isLoading={props.campsitesLoading}
                     errMess={props.campsitesErrMess}
                 />

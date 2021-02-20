@@ -32,7 +32,7 @@ class Main extends Component {
 
   render() {
     const HomePage = () => {
-      console.log("in Main, this.props.campsites reads:"+JSON.stringify(this.props.campsites, null, 2));
+      console.log("in Main, in const HomePage this.props.campsites reads:", this.props.campsites);
 
       return (
           <Home

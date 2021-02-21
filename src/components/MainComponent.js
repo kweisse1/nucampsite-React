@@ -38,14 +38,13 @@ class Main extends Component {
 
   render() {
     const HomePage = () => {
-      console.log("in Main, in const HomePage this.props.campsites reads:", this.props.campsites);
-
+      console.log("in Main, in const HomePage this.props reads:", this.props);
       return (
           <Home
-              // campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
+              campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
               campsitesLoading={this.props.campsites.isLoading}
               campsitesErrMess={this.props.campsites.errMess}
-              // promotion={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}
+              promotion={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}
               promotionLoading={this.props.promotions.isLoading}
               promotionErrMess={this.props.promotions.errMess}
               partner={this.props.partners.filter(partner => partner.featured)[0]}

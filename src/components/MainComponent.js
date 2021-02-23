@@ -29,7 +29,6 @@ const mapDispatchToProps = {
 };
 
 class Main extends Component {
-
   componentDidMount() {
     this.props.fetchCampsites();
     this.props.fetchComments();
@@ -38,7 +37,6 @@ class Main extends Component {
 
   render() {
     const HomePage = () => {
-      console.log("main const HomePage this.props:", this.props);
       return (
           <Home
               campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}

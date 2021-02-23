@@ -38,7 +38,7 @@ class Main extends Component {
 
   render() {
     const HomePage = () => {
-      console.log("in Main, in const HomePage this.props reads:", this.props);
+      console.log("main const HomePage this.props:", this.props);
       return (
           <Home
               campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
@@ -53,8 +53,9 @@ class Main extends Component {
     } 
 
     const CampsiteWithId = ({match}) => {
+      console.log("MainComponent CamspiteWithId match:", match);
       return (
-        <>
+        <React.Fragment>
           <CampsiteInfo
             campsite={this.props.campsites.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
             isLoading={this.props.campsites.isLoading}
@@ -64,7 +65,7 @@ class Main extends Component {
             commentsErrMess={this.props.comments.errMess}
             addComment={this.props.addComment}
           />
-        </>
+        </React.Fragment>
       );
     }
 

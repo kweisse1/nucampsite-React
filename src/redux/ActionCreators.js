@@ -154,7 +154,6 @@ export const addPromotions = promotions => ({
 
 //Partners 
 export const fetchPartners = () => dispatch => {
-
     dispatch(partnersLoading());
 
     return fetch(baseUrl + 'partners')

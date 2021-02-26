@@ -47,11 +47,10 @@ function Home(props) {
                     />
                 </div>
                 <div className="col-md m-1">
-                    {/* <RenderCard 
-                    //this is broken, item seems to be empty, why?
+                    <RenderCard 
                         item={props.partner}
                         isLoading={props.partnerLoading}
-                        errMess={props.partnerErrMess} /> */}
+                        errMess={props.partnerErrMess} />
                 </div>
                 <div className="col-md m-1"></div>
             </div>

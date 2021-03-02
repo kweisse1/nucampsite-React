@@ -50,7 +50,6 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        console.log("handle submit values:" + values.text);
         this.toggleModal();
         this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
@@ -164,7 +163,6 @@ function CampsiteInfo(props) {
             </div>
         )
     }
-    console.log(props.comments);
     if (props.campsite) {
         return (
             <div className="container">

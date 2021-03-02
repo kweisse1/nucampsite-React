@@ -5,7 +5,6 @@ import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({ item, isLoading, errMess }) {
-    console.log(item);
     if (isLoading) {
         return <Loading />;
     }
@@ -30,7 +29,6 @@ function RenderCard({ item, isLoading, errMess }) {
 }
 
 function Home(props) {
-    console.log(props, "home props")
     return (
         <div className="container">
             <div className="row">

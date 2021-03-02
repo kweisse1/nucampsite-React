@@ -108,7 +108,6 @@ export const postComment = (campsiteId, rating, author, text) => dispatch => {
     .then(response => response.json())
     .then(response => dispatch(addComment(response)))
     .catch(error=> {
-        console.log('post comment', error.message);
         alert("Your comment could not be posted\nError:" + error.message);
     });
 };
@@ -189,3 +188,37 @@ export const addPartners = partners => ({
     type: ActionTypes.ADD_PARTNERS,
     payload: partners
 });
+
+//feedback
+export const postFeedback = (campsiteId, rating, author, text) => {
+    const newFeedback = {
+        campsiteId: campsiteId,
+        rating: rating,
+        author: author,
+        text: text
+    };
+    newFeedback.date = new Date().toISOString();
+    return fetch(baseUrl + 'feedback', {
+        method: "POST",
+        body: JSON.stringify(newFeedback),
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+    .then(response => {
+            if (response.ok) {
+                alert("Thank you for your feedback!", newFeedback);
+                return response;
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => { throw error; }
+    )
+    .then(response => response.json())
+    .catch(error=> {
+        alert("Your feedback could not be posted\nError:" + error.message);
+    });
+};

@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
+import { Fade, Stagger } from 'react-animation-components';
 
 function About(props) {
     return (
@@ -57,7 +58,7 @@ function About(props) {
                 <div className="col-12">
                     <h3>Community Partners</h3>
                 </div>
-                <PartnerList partners={props.partners}/>
+                        <PartnerList partners={props.partners} />
             </div>
         </div>
     );
@@ -66,13 +67,13 @@ function About(props) {
 function RenderPartner({ partner }) {
     if (partner) {
         return (
-            <React.Fragment>
+            <Fade in>
                 <Media object src={baseUrl + partner.image} alt={partner.name} width="150" />
                 <Media body className="ml-5 mb-4">
                     <Media heading>{partner.name}</Media>
                     {partner.description}
                 </Media>
-            </React.Fragment>
+            </Fade>
         )
 
     }
@@ -82,16 +83,18 @@ function RenderPartner({ partner }) {
 function PartnerList(props) {
     const partners = props.partners.partners.map(partner => {
         return (
-            <Media tag="li" key={partner.id}>
-                 <RenderPartner partner={partner}/>
-            </Media>
+                <Stagger in key={partner.id}>
+                    <Media tag="li" >
+                        <RenderPartner partner={partner} />
+                    </Media>
+                </Stagger>
         );
     });
 
-    if (props.partners.isLoading){
-        return <Loading/>;
+    if (props.partners.isLoading) {
+        return <Loading />;
     }
-    if (props.partners.errMess){
+    if (props.partners.errMess) {
         return (
             <div className="col">
                 <h4>{props.partners.errMess}</h4>
